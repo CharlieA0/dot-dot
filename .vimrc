@@ -24,6 +24,19 @@ Plugin 'tpope/vim-fugitive'
 
 Plugin 'tpope/vim-commentary'
 
+Plugin 'ludovicchabant/vim-gutentags'
+
+Plugin 'scrooloose/nerdtree'
+
+Plugin 'reedes/vim-pencil'
+
+Plugin 'tpope/vim-markdown'
+
+Plugin 'nvie/vim-flake8'
+
+" needs +python not +python3
+" Plugin 'taketwo/vim-ros'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -39,18 +52,13 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Make ',' the map leader
+let mapleader = ","
+
 " Gruvbox
 set termguicolors
 set background=dark   " Setting dark mode
 colorscheme gruvbox
-
-" Override colors
-highlight Comment term=bold ctermfg=248 guifg=#a8a8a8
-highlight LineNr term=bold ctermfg=248 guifg=#a8a8a8
-
-" Make background transparent
-highlight Normal guibg=NONE ctermbg=NONE
-highlight NonText guibg=NONE ctermbg=NONE
 
 " Map FZF to Ctrl-P
 nmap <c-p> :FZF<CR>
@@ -96,4 +104,48 @@ set scrolloff=2
 set autoread
 
 " Use the mouse
-set mouse=a
+set mouse=
+
+" Search for tags from current directory to root
+set tags=tags;/
+
+" Open tags in new tab
+:nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+
+" Map NerdTree toggle
+map <C-n> :NERDTreeToggle<CR>
+
+" Custom NerdTree mappings
+let NERDTreeMapOpenVSplit='v'
+let NERDTreeMapOpenSplit='x'
+
+" Hide mode notification text
+set noshowmode 
+
+" Fix broken backspace
+set bs=2
+
+" Gutentags extra args
+let g:gutentags_ctags_extra_args = ["c++-kinds=+p", "fields=+iaS", "extra=+q", "language-force=C++"]
+
+" Override colors
+highlight Comment term=bold ctermfg=248 guifg=#aaaaaa
+highlight LineNr term=bold ctermfg=248 guifg=#aaaaaa
+
+" Quickly insert an empty new line without entering insert mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
+" Spell check settings
+set spelllang=en_us
+hi clear SpellBad
+hi SpellBad ctermbg=Red
+
+" Make background transparent
+highlight Normal guibg=NONE ctermbg=NONE
+highlight NonText guibg=NONE ctermbg=NONE
+
+" Python Flake8 Linter
+let g:flake8_show_in_gutter=1  " show
+
+autocmd BufWritePost *.py call flake8#Flake8()
