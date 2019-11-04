@@ -126,3 +126,27 @@ stty -ixon
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/charlie/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/charlie/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/charlie/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/charlie/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Adds rustup binaries to path
+# export PATH=$PATH:/home/charlie/.cargo/bin
+
+# Activate environment if $VIRTUAL_ENV set
+if [ -n "$VIRTUAL_ENV" ]; then
+    source $VIRTUAL_ENV/bin/activate;
+fi
+

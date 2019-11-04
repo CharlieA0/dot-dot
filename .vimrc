@@ -28,11 +28,11 @@ Plugin 'ludovicchabant/vim-gutentags'
 
 Plugin 'scrooloose/nerdtree'
 
-Plugin 'reedes/vim-pencil'
+" Plugin 'reedes/vim-pencil'
 
-Plugin 'tpope/vim-markdown'
+" Plugin 'tpope/vim-markdown'
 
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
 
 " needs +python not +python3
 " Plugin 'taketwo/vim-ros'
@@ -98,7 +98,8 @@ set rtp+=~/.fzf
 syntax on
 
 " Always show at least 2 lines under cursor
-set scrolloff=2
+set scrolloff=5
+set sidescrolloff=5
 
 " Reload the file if it is changed
 set autoread
@@ -149,3 +150,56 @@ highlight NonText guibg=NONE ctermbg=NONE
 let g:flake8_show_in_gutter=1  " show
 
 autocmd BufWritePost *.py call flake8#Flake8()
+
+" Turn off sounds and flashing
+set belloff=all
+
+" indent wrapped lines
+set breakindent
+set breakindentopt=shift:2
+
+" hightlight all search matches
+set hlsearch
+
+" use the OS clipboard
+set clipboard=unnamedplus
+
+" auto. reread file when changed outside of vim
+set ar
+
+" case insensitive, but be smart
+set ignorecase
+set smartcase
+
+" set escape timeout
+set ttimeoutlen=0
+
+" persistent undo history across sessions
+set undofile
+set undodir=~/.vim/undo
+
+" Make those folder automatically if it doesn't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+
+" always round indents to multiple of shiftwidth
+set shiftround
+
+" show invisible chars
+set listchars=tab:»·,trail:·,extends:…
+set list
+
+"spelling error
+command! Q q
+command! Qa qa
+command! QA qa
+
+" clear search highlighting
+nnoremap <leader>/ :nohlsearch<CR>:echo<CR>
+
+" easier split window navigation
+nnoremap <C-j>     <C-w>j
+nnoremap <C-k>     <C-w>k
+nnoremap <C-h>     <C-w>h
+nnoremap <C-l>     <C-w>l
