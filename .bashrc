@@ -126,7 +126,7 @@ stty -ixon
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-echo MIT Driverless testbed IP: 192.168.0.230
+# echo MIT Driverless testbed IP: 192.168.0.230
 alias xcd="cd /home/$USER/DUT18D_ws"
 alias xs="source /home/$USER/DUT18D_ws/devel/setup.bash"
 alias xviz="export ROS_MASTER_URI=http://192.168.0.230:11311"
@@ -161,5 +161,5 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # pipenv
-alias envrun=pipenv run python
+alias envrun="pipenv run python"
 
