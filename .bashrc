@@ -116,10 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
 # Tell tmux to use true colors
 export TERM=xterm-256color
 
