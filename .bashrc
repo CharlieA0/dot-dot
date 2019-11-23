@@ -57,9 +57,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u\W\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -116,6 +116,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 # Tell tmux to use true colors
 export TERM=xterm-256color
 
@@ -126,6 +130,11 @@ stty -ixon
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+echo MIT Driverless testbed IP: 192.168.0.230
+alias xcd="cd /home/$USER/DUT18D_ws"
+alias xs="source /home/$USER/DUT18D_ws/devel/setup.bash"
+alias xviz="export ROS_MASTER_URI=http://192.168.0.230:11311"
+xs
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -145,14 +154,16 @@ unset __conda_setup
 # Adds rustup binaries to path
 # export PATH=$PATH:/home/charlie/.cargo/bin
 
-# Activate environment if $VIRTUAL_ENV set
-if [ -n "$VIRTUAL_ENV" ]; then
-    source $VIRTUAL_ENV/bin/activate;
-fi
+# auto activate virtual environments
+# if [ -n "$VIRTUAL_ENV" ]; then
+#    source $VIRTUAL_ENV/bin/activate;
+# fi
 
-# Load pyenv automatically
-export PATH="/home/charlie/.pyenv/bin:$PATH"
+# pyenv
+export PATH="/home/mitdriverless9000/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# pipenv
+alias envrun=pipenv run python
 
