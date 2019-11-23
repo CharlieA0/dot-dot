@@ -30,11 +30,9 @@ Plugin 'scrooloose/nerdtree'
 
 Plugin 'scrooloose/nerdcommenter'
 
-" Plugin 'reedes/vim-pencil'
+Plugin 'tpope/vim-markdown'
 
-" Plugin 'tpope/vim-markdown'
-
-" Plugin 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 
 " needs +python not +python3
 " Plugin 'taketwo/vim-ros'
@@ -221,3 +219,6 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 
+
+" Don't delete word in insert
+imap <C-w> <Nop>
