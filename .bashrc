@@ -188,10 +188,10 @@ unset __conda_setup
 # fi
 
 # pyenv
-export PATH="/home/mitdriverless9000/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # pipenv
-alias envrun="pipenv run python"
+alias prp="pipenv run python"
 
