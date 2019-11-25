@@ -53,7 +53,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Make ',' the map leader
-let mapleader = ","
+let mapleader = "."
 
 " Gruvbox
 set termguicolors
