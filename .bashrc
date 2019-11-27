@@ -195,3 +195,5 @@ eval "$(pyenv virtualenv-init -)"
 # pipenv
 alias prp="pipenv run python"
 
+# ROS YouCompleteMe
+export ROS_WORKSPACE=~/DUT18D_ws/src

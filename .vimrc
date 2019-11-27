@@ -34,8 +34,12 @@ Plugin 'tpope/vim-markdown'
 
 Plugin 'nvie/vim-flake8'
 
+Plugin 'junegunn/fzf.vim'
+
+Plugin 'sheerun/vim-polyglot'
+
 " needs +python not +python3
-" Plugin 'taketwo/vim-ros'
+Plugin 'taketwo/vim-ros'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,7 +93,7 @@ set completeopt-=preview
 set number
 
 " fzf
-set rtp+=~/.fzf
+set rtp+=~/fzf
 
 " Indicate style guide max line width
 " set colorcolumn=79
@@ -203,6 +207,7 @@ nnoremap <C-j>     <C-w>j
 nnoremap <C-k>     <C-w>k
 nnoremap <C-h>     <C-w>h
 nnoremap <C-l>     <C-w>l
+nnoremap <C-o>     <C-w><C-w>
 
 " for nerdcommenter
 filetype plugin on
@@ -219,6 +224,16 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 
-
 " Don't delete word in insert
 imap <C-w> <Nop>
+
+" NerdCommenter
+filetype plugin on
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+" let g:NERDCommentEmptyLines = 1
+" let g:NERDTrimTrailingWhitespace = 1
+" let g:NERDToggleCheckAllLines = 1
+
+" YCM
+let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py" 
