@@ -39,7 +39,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'sheerun/vim-polyglot'
 
 " needs +python not +python3
-Plugin 'taketwo/vim-ros'
+" Plugin 'taketwo/vim-ros'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -236,4 +236,4 @@ let g:NERDCompactSexyComs = 1
 " let g:NERDToggleCheckAllLines = 1
 
 " YCM
-let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py" 
+" let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py" 
