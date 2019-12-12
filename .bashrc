@@ -57,9 +57,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u\W\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -116,6 +116,36 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Author.: Ole J
+# Date...: 23.03.2008
+# License: Whatever
+
+# Wraps a completion function
+# make-completion-wrapper <actual completion function> <name of new func.>
+#                         <command name> <list supplied arguments>
+# eg.
+# 	alias agi='apt-get install'
+# 	make-completion-wrapper _apt_get _apt_get_install apt-get install
+# defines a function called _apt_get_install (that's $2) that will complete
+# the 'agi' alias. (complete -F _apt_get_install agi)
+#
+function make-completion-wrapper () {
+	local function_name="$2"
+	local arg_count=$(($#-3))
+	local comp_function_name="$1"
+	shift 2
+	local function="
+function $function_name {
+	((COMP_CWORD+=$arg_count))
+	COMP_WORDS=( "$@" \${COMP_WORDS[@]:1} )
+	"$comp_function_name"
+	return 0
+}"
+	eval "$function"
+	echo $function_name
+	echo "$function"
+}
+
 # Tell tmux to use true colors
 export TERM=xterm-256color
 
@@ -124,8 +154,15 @@ stty -ixon
 
 # alias for managing dotfiles with git
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# make-completion-wrapper _fzf_path_completion _dotfiles git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME
+# complete -F _dotfiles dotfiles
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# echo MIT Driverless testbed IP: 192.168.0.230
+alias xcd="cd /home/$USER/DUT18D_ws"
+alias xs="source /home/$USER/DUT18D_ws/devel/setup.bash"
+alias xviz="export ROS_MASTER_URI=http://192.168.0.230:11311"
+xs
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -145,12 +182,23 @@ unset __conda_setup
 # Adds rustup binaries to path
 # export PATH=$PATH:/home/charlie/.cargo/bin
 
-# Activate environment if $VIRTUAL_ENV set
-if [ -n "$VIRTUAL_ENV" ]; then
-    source $VIRTUAL_ENV/bin/activate;
-fi
+# auto activate virtual environments
+# if [ -n "$VIRTUAL_ENV" ]; then
+#    source $VIRTUAL_ENV/bin/activate;
+# fi
+
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# pipenv
+alias prp="pipenv run python"
 
 # ROS
 source /opt/ros/melodic/setup.bash
 alias xs="source /home/$USER/DUT18D_ws/devel/setup.bash"
 xs
+
+# ROS YouCompleteMe
+export ROS_WORKSPACE=~/autonomy/src
