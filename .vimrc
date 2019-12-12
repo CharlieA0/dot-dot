@@ -38,6 +38,8 @@ Plugin 'junegunn/fzf.vim'
 
 Plugin 'sheerun/vim-polyglot'
 
+Plugin 'vim/killersheep'
+
 " needs +python not +python3
 " Plugin 'taketwo/vim-ros'
 
