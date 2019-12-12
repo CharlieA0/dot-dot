@@ -150,3 +150,7 @@ if [ -n "$VIRTUAL_ENV" ]; then
     source $VIRTUAL_ENV/bin/activate;
 fi
 
+# ROS
+source /opt/ros/melodic/setup.bash
+alias xs="source /home/$USER/DUT18D_ws/devel/setup.bash"
+xs
