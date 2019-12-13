@@ -72,30 +72,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -116,36 +92,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Author.: Ole J
-# Date...: 23.03.2008
-# License: Whatever
-
-# Wraps a completion function
-# make-completion-wrapper <actual completion function> <name of new func.>
-#                         <command name> <list supplied arguments>
-# eg.
-# 	alias agi='apt-get install'
-# 	make-completion-wrapper _apt_get _apt_get_install apt-get install
-# defines a function called _apt_get_install (that's $2) that will complete
-# the 'agi' alias. (complete -F _apt_get_install agi)
-#
-function make-completion-wrapper () {
-	local function_name="$2"
-	local arg_count=$(($#-3))
-	local comp_function_name="$1"
-	shift 2
-	local function="
-function $function_name {
-	((COMP_CWORD+=$arg_count))
-	COMP_WORDS=( "$@" \${COMP_WORDS[@]:1} )
-	"$comp_function_name"
-	return 0
-}"
-	eval "$function"
-	echo $function_name
-	echo "$function"
-}
-
 # Tell tmux to use true colors
 export TERM=xterm-256color
 
@@ -154,33 +100,15 @@ stty -ixon
 
 # alias for managing dotfiles with git
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-# make-completion-wrapper _fzf_path_completion _dotfiles git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME
-# complete -F _dotfiles dotfiles
 
+# FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # echo MIT Driverless testbed IP: 192.168.0.230
 alias xcd="cd /home/$USER/DUT18D_ws"
-alias xs="source /home/$USER/DUT18D_ws/devel/setup.bash"
+alias xs="source /home/$USER/autonomy/devel/setup.bash"
 alias xviz="export ROS_MASTER_URI=http://192.168.0.230:11311"
 xs
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/charlie/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/charlie/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/charlie/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/charlie/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Adds rustup binaries to path
-# export PATH=$PATH:/home/charlie/.cargo/bin
 
 # auto activate virtual environments
 # if [ -n "$VIRTUAL_ENV" ]; then
@@ -197,8 +125,6 @@ alias prp="pipenv run python"
 
 # ROS
 source /opt/ros/melodic/setup.bash
-alias xs="source /home/$USER/DUT18D_ws/devel/setup.bash"
-xs
 
 # ROS YouCompleteMe
 export ROS_WORKSPACE=~/autonomy/src
