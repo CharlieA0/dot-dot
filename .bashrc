@@ -104,6 +104,9 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# ROS
+source /opt/ros/melodic/setup.bash
+
 # echo MIT Driverless testbed IP: 192.168.0.230
 alias xcd="cd /home/$USER/DUT18D_ws"
 alias xs="source /home/$USER/autonomy/devel/setup.bash"
@@ -119,12 +122,6 @@ xs
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# pipenv
-alias prp="pipenv run python"
-
-# ROS
-source /opt/ros/melodic/setup.bash
 
 # ROS YouCompleteMe
 export ROS_WORKSPACE=~/autonomy/src
