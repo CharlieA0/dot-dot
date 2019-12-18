@@ -100,6 +100,7 @@ stty -ixon
 
 # alias for managing dotfiles with git
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles config status.showUntrackedFiles no
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
