@@ -67,6 +67,7 @@ set background=dark   " Setting dark mode
 colorscheme gruvbox
 
 " Map FZF to Ctrl-P
+set rtp+=~/.fzf
 nmap <c-p> :FZF<CR>
 
 " Lightline
