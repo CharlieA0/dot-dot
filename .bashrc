@@ -124,10 +124,10 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# compile pyenv pythons with linking support for YouCompleteMe
-export PYTHON_CFLAGS="-fPIC"
-export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
-export LD_LIBRARY_PATH=/home/$USER/.pyenv/versions/3.8.0/lib:$LD_LIBRARY_PATH
+# # compile pyenv pythons with linking support for YouCompleteMe
+# export PYTHON_CFLAGS="-fPIC"
+# export PYTHON_CONFIGURE_OPTS="--enable-shared --enable-unicode=ucs4"
+# export LD_LIBRARY_PATH=/home/$USER/.pyenv/versions/3.8.0/lib:$LD_LIBRARY_PATH
 
 # ROS YouCompleteMe
 export ROS_WORKSPACE=/home/$USER/autonomy/src
