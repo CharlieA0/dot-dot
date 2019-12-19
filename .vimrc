@@ -67,6 +67,7 @@ set background=dark   " Setting dark mode
 colorscheme gruvbox
 
 " Map FZF to Ctrl-P
+set rtp+=~/.fzf
 nmap <c-p> :FZF<CR>
 
 " Lightline
@@ -83,6 +84,7 @@ let g:auto_save_write_all_buffers = 1  " write all open buffers as if you would 
 set shiftwidth=2
 set tabstop=2
 set cindent
+set autoindent
 set expandtab
 
 " Toggle paste
