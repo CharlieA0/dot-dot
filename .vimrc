@@ -113,7 +113,7 @@ set sidescrolloff=5
 set autoread
 
 " Use the mouse
-set mouse=
+set mouse=a
 
 " Search for tags from current directory to root
 set tags=tags;/
