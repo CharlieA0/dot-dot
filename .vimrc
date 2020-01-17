@@ -59,7 +59,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Make '.' the map leader
-let mapleader = "."
+let mapleader = ","
 
 " Gruvbox
 set termguicolors
@@ -113,7 +113,7 @@ set sidescrolloff=5
 set autoread
 
 " Use the mouse
-set mouse=
+set mouse=a
 
 " Search for tags from current directory to root
 set tags=tags;/
@@ -241,3 +241,13 @@ let g:NERDCompactSexyComs = 1
 
 " YCM
 " let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py" 
+
+" vim fugitive
+set diffopt+=vertical
+
+" remove trailing whitespace from these files
+autocmd BufWritePre *\.c :%s/\s\+$//e
+autocmd BufWritePre *\.h :%s/\s\+$//e
+autocmd BufWritePre *\.cpp :%s/\s\+$//e
+autocmd BufWritePre *\.hpp :%s/\s\+$//e
+autocmd BufWritePre *\.py :%s/\s\+$//e
