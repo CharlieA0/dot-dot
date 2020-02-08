@@ -241,3 +241,9 @@ let g:NERDCompactSexyComs = 1
 
 " YCM
 " let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py" 
+
+" Notify vim .md files are markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+" Delete trailling whitespace from these files
+autocmd FileType c,cpp,java,php,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
