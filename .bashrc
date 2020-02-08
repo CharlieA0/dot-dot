@@ -109,7 +109,7 @@ dotfiles config status.showUntrackedFiles no
 source /opt/ros/melodic/setup.bash
 
 # echo MIT Driverless testbed IP: 192.168.0.230
-alias xcd="cd /home/$USER/DUT18D_ws"
+alias xcd="cd /home/$USER/autonomy"
 alias xs="source /home/$USER/autonomy/devel/setup.bash"
 alias xviz="export ROS_MASTER_URI=http://192.168.0.230:11311"
 xs
