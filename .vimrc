@@ -247,3 +247,6 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " Delete trailling whitespace from these files
 autocmd FileType c,cpp,java,php,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
+
+" Tab limit
+set tabpagemax=100
