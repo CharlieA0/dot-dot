@@ -131,3 +131,6 @@ eval "$(pyenv virtualenv-init -)"
 
 # ROS YouCompleteMe
 export ROS_WORKSPACE=/home/$USER/autonomy/src
+
+# HPIPM
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/blasfeo/lib:/opt/hpipm/lib

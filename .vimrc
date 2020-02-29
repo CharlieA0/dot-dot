@@ -74,7 +74,19 @@ nmap <c-p> :FZF<CR>
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
+      \ 'component_function': {
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \ },
       \ }
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
 
 " Vim Autosave
 let g:auto_save = 1 " enable on startup
