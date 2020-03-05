@@ -112,7 +112,6 @@ source /opt/ros/melodic/setup.bash
 alias xcd="cd /home/$USER/autonomy"
 alias xs="source /home/$USER/autonomy/devel/setup.bash"
 alias xviz="export ROS_MASTER_URI=http://192.168.0.230:11311"
-xs
 
 # auto activate virtual environments
 # if [ -n "$VIRTUAL_ENV" ]; then
