@@ -60,7 +60,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" Make '.' the map leader
+" Make ',' the map leader
 let mapleader = ","
 
 " Gruvbox
@@ -76,7 +76,19 @@ nmap <c-p> :FZF<CR>
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
+      \ 'component_function': {
+      \   'fileformat': 'LightlineFileformat',
+      \   'filetype': 'LightlineFiletype',
+      \ },
       \ }
+
+function! LightlineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
 
 " Vim Autosave
 let g:auto_save = 1 " enable on startup
@@ -247,12 +259,14 @@ let g:NERDCompactSexyComs = 1
 " vim fugitive
 set diffopt+=vertical
 
-" remove trailing whitespace from these files
-autocmd BufWritePre *\.c :%s/\s\+$//e
-autocmd BufWritePre *\.h :%s/\s\+$//e
-autocmd BufWritePre *\.cpp :%s/\s\+$//e
-autocmd BufWritePre *\.hpp :%s/\s\+$//e
-autocmd BufWritePre *\.py :%s/\s\+$//e
-
 " Show best practices line limit
 set colorcolumn=80
+
+" Notify vim .md files are markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+
+" Delete trailling whitespace from these files
+autocmd FileType c,cpp,java,php,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
+
+" Vim tabs limit
+set tabpagemax=100
