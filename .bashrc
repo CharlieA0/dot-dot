@@ -111,7 +111,10 @@ source /opt/ros/melodic/setup.bash
 # echo MIT Driverless testbed IP: 192.168.0.230
 alias xcd="cd /home/$USER/DUT18D_ws"
 alias xs="source /home/$USER/autonomy/devel/setup.bash"
-alias xviz="export ROS_MASTER_URI=http://192.168.0.230:11311"
+alias xmaster="export ROS_IP=192.168.1.2; export ROS_MASTER_URI=http://kieran-ThinkPad-X1-Extreme:11311;"
+alias xunmaster="unset ROS_IP; unset ROS_MASTER_URI"
+alias eluke=" ssh kieran@192.168.1.1 -X"
+alias xp="rosservice call /perception_server/reset"
 xs
 
 # auto activate virtual environments
@@ -131,3 +134,5 @@ eval "$(pyenv virtualenv-init -)"
 
 # ROS YouCompleteMe
 export ROS_WORKSPACE=/home/$USER/autonomy/src
+
+# ROS Networking
