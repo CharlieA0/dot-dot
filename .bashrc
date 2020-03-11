@@ -108,6 +108,8 @@ dotfiles config status.showUntrackedFiles no
 # ROS
 source /opt/ros/melodic/setup.bash
 
+# ROS autonomy repo commands
+
 # echo MIT Driverless testbed IP: 192.168.0.230
 alias xcd="cd /home/$USER/autonomy"
 alias xs="source /home/$USER/autonomy/devel/setup.bash"
@@ -115,6 +117,11 @@ alias xmaster="export ROS_IP=192.168.1.2; export ROS_MASTER_URI=http://luke:1131
 alias xunmaster="unset ROS_IP; unset ROS_MASTER_URI"
 alias eluke=" ssh luke@luke -X"
 alias xp="rosservice call /perception_server/reset"
+
+# DRL knightrider repo commands
+alias rcd="cd /home/$USER/knightrider/catkin_ws"
+alias rs="source /home/$USER/knightrider/catkin_ws/src/knightrider-mobility/launch/tools/environment_setup.sh"
+
 xs
 
 # auto activate virtual environments
