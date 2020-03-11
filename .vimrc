@@ -40,6 +40,8 @@ Plugin 'sheerun/vim-polyglot'
 
 Plugin 'vim/killersheep'
 
+" Plugin 'jiangmiao/auto-pairs'
+
 " needs +python not +python3
 " Plugin 'taketwo/vim-ros'
 
@@ -251,3 +253,6 @@ autocmd BufWritePre *\.h :%s/\s\+$//e
 autocmd BufWritePre *\.cpp :%s/\s\+$//e
 autocmd BufWritePre *\.hpp :%s/\s\+$//e
 autocmd BufWritePre *\.py :%s/\s\+$//e
+
+" Show best practices line limit
+set colorcolumn=80
