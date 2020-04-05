@@ -40,6 +40,8 @@ Plugin 'sheerun/vim-polyglot'
 
 Plugin 'vim/killersheep'
 
+Plugin 'taketwo/vim-ros'
+
 " Plugin 'jiangmiao/auto-pairs'
 
 " needs +python not +python3
@@ -265,8 +267,17 @@ set colorcolumn=80
 " Notify vim .md files are markdown
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
+" Notify vim ros .test files are xml
+autocmd BufNewFile,BufRead *.test set filetype=xml
+
 " Delete trailling whitespace from these files
-autocmd FileType c,cpp,java,php,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd FileType py,c,cpp,java,php,markdown autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " Vim tabs limit
 set tabpagemax=100
+
+" vim-ros YCM semantic triggers
+let g:ycm_semantic_triggers = {
+\   'roslaunch' : ['="', '$(', '/'],
+\   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
+\ }
