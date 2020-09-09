@@ -40,8 +40,6 @@ Plugin 'sheerun/vim-polyglot'
 
 Plugin 'vim/killersheep'
 
-Plugin 'taketwo/vim-ros'
-
 " Plugin 'jiangmiao/auto-pairs'
 
 " needs +python not +python3

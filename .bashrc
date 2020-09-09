@@ -106,23 +106,23 @@ dotfiles config status.showUntrackedFiles no
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # ROS
-source /opt/ros/melodic/setup.bash
+# source /opt/ros/melodic/setup.bash
 
 # ROS autonomy repo commands
 
 # echo MIT Driverless testbed IP: 192.168.0.230
-alias xcd="cd /home/$USER/autonomy"
-alias xs="source /home/$USER/autonomy/devel/setup.bash"
-alias xmaster="export ROS_IP=192.168.1.2; export ROS_MASTER_URI=http://luke:11311;"
-alias xunmaster="unset ROS_IP; unset ROS_MASTER_URI"
-alias eluke=" ssh luke@luke -X"
-alias xp="rosservice call /perception_server/reset"
+# alias xcd="cd /home/$USER/autonomy"
+# alias xs="source /home/$USER/autonomy/devel/setup.bash"
+# alias xmaster="export ROS_IP=192.168.1.2; export ROS_MASTER_URI=http://luke:11311;"
+# alias xunmaster="unset ROS_IP; unset ROS_MASTER_URI"
+# alias eluke=" ssh luke@luke -X"
+# alias xp="rosservice call /perception_server/reset"
 
 # DRL knightrider repo commands
-alias rcd="cd /home/$USER/knightrider/catkin_ws"
-alias rs="source /home/$USER/knightrider/catkin_ws/src/knightrider-mobility/launch/tools/environment_setup.sh"
+# alias rcd="cd /home/$USER/knightrider/catkin_ws"
+# alias rs="source /home/$USER/knightrider/catkin_ws/src/knightrider-mobility/launch/tools/environment_setup.sh"
 
-xs
+# xs
 
 # auto activate virtual environments
 # if [ -n "$VIRTUAL_ENV" ]; then
@@ -140,4 +140,4 @@ eval "$(pyenv virtualenv-init -)"
 # export LD_LIBRARY_PATH=/home/$USER/.pyenv/versions/3.8.0/lib:$LD_LIBRARY_PATH
 
 # ROS YouCompleteMe
-export ROS_WORKSPACE=/home/$USER/autonomy/src
+# export ROS_WORKSPACE=/home/$USER/autonomy/src
